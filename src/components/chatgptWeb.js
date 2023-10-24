@@ -54,7 +54,7 @@ export default function ChatgptWeb() {
           },
         });
 
-        console(response, "naman yyy1111")
+        console.log(response, "naman yyy1111")
 
         setCurrentchatarray([...currentchatarray, query, response.data]);
 
