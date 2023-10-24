@@ -1,0 +1,61 @@
+.drawer {
+  width: 0;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  background-color: hsl(0, 0%, 20%);
+  overflow-x: hidden;
+  overflow-y: hidden;
+  transition: 0.3s;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.drawer2 {
+  width: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  /* background-color: hsl(0, 0%, 20%); */
+  overflow-x: hidden;
+  overflow-y: hidden;
+  transition: 0.3s;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.drawer2.open {
+  width: 300px;
+  height: 100vh;
+  overflow-y: hidden;
+}
+
+.drawer.open {
+  width: 400px;
+  height: 100vh;
+  overflow-y: hidden;
+}
+
+.toggle-button {
+  position: fixed;
+  left: 5px;
+  top: 50%;
+}
+
+.toggle-button2 {
+  position: fixed;
+  left: 5px;
+  top: 20px;
+}
+
+.pdfLoader {
+  height: 100vh;
+  color: white;
+}

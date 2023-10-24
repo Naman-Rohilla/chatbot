@@ -1,0 +1,23 @@
+.drawer3 {
+  width: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  /* background-color: hsl(0, 0%, 20%); */
+  background-color: black;
+  color: white;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  transition: 0.3s;
+  /* color: black; */
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.drawer3.open {
+  width: 300px;
+  height: 100vh;
+  overflow-y: hidden;
+}
