@@ -53,7 +53,7 @@ export default function Footer({ targetElement }) {
           <div className="pl-10 -mt-10 flex space-x-10">
             <span className="flex flex-col text-white ">
               <span className="font-bold text-lg">Products</span>
-              <Link to="/about" className="pt-2 cursor-pointer">ChatBot</Link>
+              <Link to="/chat-bot" className="pt-2 cursor-pointer">ChatBot</Link>
               <Link to="/ocr" className="pt-1 cursor-pointer">OCR PDF</Link>
             </span>
             <span className="flex flex-col text-white ">

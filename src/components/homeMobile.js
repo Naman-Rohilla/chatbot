@@ -268,7 +268,7 @@ export default function HomeMobile({ targetHome }) {
               </span>
               <span className="flex pt-5">
                 <span className="space-x-1 flex px-4 py-1.5 border border-white border-dotted cursor-pointer">
-                  <Link to="/about">Try ChatBot</Link>
+                  <Link to="/chat-bot">Try ChatBot</Link>
                   <span>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -328,7 +328,7 @@ export default function HomeMobile({ targetHome }) {
         <div className="h-full w-full flex flex-col justify-center items-center">
           <div className="flex flex-col h-full justify-center">
             <Link
-              to="/about"
+              to="/chat-bot"
               className="chat3 bg-teal-500 p-2 h-60 w-60 ease-in-out duration-150 hover:scale-105 hover:shadow-xl hover:shadow-gray-900"
             >
               <img src="./chat3.png"></img>

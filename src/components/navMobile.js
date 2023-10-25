@@ -137,7 +137,7 @@ export default function NavMobile({ targetElement }) {
               <Link to="/">Home</Link>
             </Link>
             <Link
-              to="/about"
+              to="/chat-bot"
               // onClick={toggleDrawer}
               className="relative w-3/4 flex flex-col justify-center ease-out transition group duration-150 hover:text-gray-50 py-4 border-t border-dotted border-white"
             >
@@ -179,7 +179,7 @@ export default function NavMobile({ targetElement }) {
               </div>
               {dropdown && (
                 <Link
-                  to="/about"
+                  to="chat-bott"
                   onClick={toggleDrawer}
                   className="ease-in-out transition delay-105 duration-100 flex justify-center w-full pl-12 pt-6 space-x-2"
                 >

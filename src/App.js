@@ -24,7 +24,7 @@ function App() {
   const targetHome = useRef(null);
 
 
-  const isContactRoute = location.pathname === "/about";
+  const isContactRoute = location.pathname === "/chat-bot";
   const isOcrRoute = location.pathname === "/ocr";
 
   const [isMobile, setIsMobile] = useState(false);
@@ -77,7 +77,7 @@ function App() {
 
           <Routes>
             <Route exact path="/" element={<Home targetHome={targetHome} />} />
-            <Route exact path="/about" element={<Chatgpt />} />
+            <Route exact path="/chat-bot" element={<Chatgpt />} />
             <Route exact path="/ocr" element={<Ocr />} />
             {/* <Route path="/contact" component={Contact} /> */}
           </Routes>

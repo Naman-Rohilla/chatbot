@@ -53,7 +53,7 @@ export default function FooterMobile({ targetElement }) {
           <div className="flex space-x-5 p-4">
             <span className="flex flex-col text-white ">
               <span className="font-bold text-lg">Products</span>
-              <Link to="/about" className="pt-2 cursor-pointer">
+              <Link to="/chat-bot" className="pt-2 cursor-pointer">
                 ChatBot
               </Link>
               <Link to="/ocr" className="pt-1 cursor-pointer">
