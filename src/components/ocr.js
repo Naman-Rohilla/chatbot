@@ -5,6 +5,7 @@ import "react-quill/dist/quill.snow.css";
 import StringEditor from "./stringEditor";
 import jsPDF from "jspdf";
 import "./ocr.css";
+import { Bars } from "react-loader-spinner";
 
 export default function Ocr() {
   const [file, setFile] = useState(null);
@@ -114,8 +115,14 @@ export default function Ocr() {
                 +
               </span>
               <span className="absolute w-60 text-sm md:text-md md:w-96 text-center pt-40 md:pt-24 text-gray-400 group-hover:text-gray-200 flex flex-col">
-                <span>Ultimate solution for converting <strong>scanned documents</strong> into editable and searchable text.</span>
-                <span>You will get <strong>PDF</strong></span>
+                <span>
+                  Ultimate solution for converting{" "}
+                  <strong>scanned documents</strong> into editable and
+                  searchable text.
+                </span>
+                <span>
+                  You will get <strong>PDF</strong>
+                </span>
               </span>
             </div>
           ) : (
@@ -147,9 +154,15 @@ export default function Ocr() {
                   <>Process PDF</>
                 </span>
               ) : (
-                <span className="mt-1 bg-gray-50 hover:scale-105 ease-in-out duration-100 hover:bg-white w-28 h-9 flex justify-center items-center">
-                  <span className="animate-spin-slow border-2 border-dotted border-gray-800 text-3xl h-6 w-6 rounded-full"></span>
-                </span>
+                <Bars
+                  height="30"
+                  width="40"
+                  color="#64748b"
+                  ariaLabel="bars-loading"
+                  wrapperStyle={{}}
+                  wrapperClass=""
+                  visible={true}
+                />
               )}
             </div>
           )}

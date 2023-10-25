@@ -49,7 +49,7 @@ export default function NavMobile({ targetElement }) {
     <>
       <div
         ref={containerRef}
-        className="z-50 fixed text-white cursor-pointer bg-gray-900 bg-opacity-90 flex justify-between items-center h-20 font-sans w-full"
+        className="z-20 fixed text-white cursor-pointer bg-gray-900 bg-opacity-90 flex justify-between items-center h-20 font-sans w-full"
       >
         <div></div>
         <div className="h-full font-styleFont flex items-center">
@@ -96,7 +96,7 @@ export default function NavMobile({ targetElement }) {
         <div
           className={`drawer3 ${
             isOpen3 ? "open" : ""
-          } font-sans flex flex-col  h-screen justify-between`}
+          } z-50 font-sans flex flex-col  h-screen justify-between`}
         >
           <div className="w-full flex flex-col items-center">
             <div

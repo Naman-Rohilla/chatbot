@@ -5,6 +5,7 @@ import "react-quill/dist/quill.snow.css";
 import StringEditor from "./stringEditor";
 // import jsPDF from "jspdf";
 import "./chatgpt.css";
+import { Bars } from "react-loader-spinner";
 
 import Drawer from "./drawer";
 
@@ -24,12 +25,15 @@ export default function ChatgptMobile() {
   const [message, setmessage] = useState(false);
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
+  const [chatloading, setchatloading] = useState(false);
+  const [processloading, setprocessloading] = useState(false);
 
   function changeChat(e) {
     setQuery(e.target.value);
   }
 
   async function submitChat(e) {
+    setchatloading(true);
     if (e.key == "Enter") {
       setQuery("");
       setCurrentchatarray([...currentchatarray, query]);
@@ -50,13 +54,18 @@ export default function ChatgptMobile() {
         else finalstr = finalstr + "now answer this question:";
         finalstr = finalstr + query;
 
-        const response = await axios.get("https://flaskserver-production.up.railway.app/", {
-          params: {
-            param1: finalstr,
-          },
-        });
+        const response = await axios.get(
+          "https://flaskserver-production.up.railway.app/",
+          {
+            params: {
+              param1: finalstr,
+            },
+          }
+        );
 
-        setCurrentchatarray([...currentchatarray, query, response.data]);
+        var tempdata = response.data;
+
+        setCurrentchatarray([...currentchatarray, query, tempdata]);
 
         var check = 0;
         console.log(curentchatid, "currentchatid");
@@ -67,7 +76,7 @@ export default function ChatgptMobile() {
             return {
               ...item,
               userQuestion: [...item.userQuestion, query],
-              botAnswer: [...item.botAnswer, response.data],
+              botAnswer: [...item.botAnswer, tempdata],
               // pdf: false;
             };
           }
@@ -80,7 +89,7 @@ export default function ChatgptMobile() {
           const newEntry = {
             id: chatid,
             userQuestion: [query],
-            botAnswer: [response.data],
+            botAnswer: [tempdata],
             pdf: false,
           };
           setChatarray([...chatarray, newEntry]);
@@ -89,9 +98,43 @@ export default function ChatgptMobile() {
         }
       } catch (err) {
         console.log(err, "err");
+        var tempdata = "data not fetched";
+        console.log(err, "err");
+        setCurrentchatarray([...currentchatarray, query, tempdata]);
+
+        var check = 0;
+        console.log(curentchatid, "currentchatid");
+        const updatedChatarray = chatarray?.map((item) => {
+          if (item.id == curentchatid) {
+            // If the item has id 1, update its userQuestion array
+            check = 1;
+            return {
+              ...item,
+              userQuestion: [...item.userQuestion, query],
+              botAnswer: [...item.botAnswer, tempdata],
+              // pdf: false;
+            };
+          }
+          // For other items, return them as they are
+          return item;
+        });
+        if (check == 1) {
+          setChatarray(updatedChatarray);
+        } else {
+          const newEntry = {
+            id: chatid,
+            userQuestion: [query],
+            botAnswer: [tempdata],
+            pdf: false,
+          };
+          setChatarray([...chatarray, newEntry]);
+          setChatid(chatid + 1);
+          setCurrentchatid(curentchatid + 1);
+        }
       }
       // console.log
     }
+    setchatloading(false);
   }
 
   function newChatFunction() {
@@ -132,6 +175,7 @@ export default function ChatgptMobile() {
 
   const handleUpload = async () => {
     console.log(file, "naman");
+    setprocessloading(true);
     if (file) {
       const formData = new FormData();
       formData.append("pdf_file", file);
@@ -172,6 +216,10 @@ export default function ChatgptMobile() {
       console.error("No PDF file selected.");
     }
     setmessage(false);
+    setprocessloading(false);
+    if (fileInputRef.current) {
+      fileInputRef.current.value = ""; // Reset the input value to an empty string
+    }
   };
 
   const handleSpanClick = () => {
@@ -191,15 +239,27 @@ export default function ChatgptMobile() {
   return (
     <>
       <div className="h-screen bg-gray-800 flex">
-        {message && (
+      {message && (
           <div className="z-50 absolute h-full w-full flex justify-center items-center">
             <div className="flex justify-center items-center bg-black text-white h-full w-full bg-opacity-50">
-              <span
-                className="px-6 py-2 rounded-md bg-gray-500 cursor-pointer hover:scale-110"
-                onClick={handleUpload}
-              >
-                Process PDF
-              </span>
+              {processloading ? (
+                <Bars
+                  height="30"
+                  width="40"
+                  color="#64748b"
+                  ariaLabel="bars-loading"
+                  wrapperStyle={{}}
+                  wrapperClass=""
+                  visible={true}
+                />
+              ) : (
+                <span
+                  className="px-6 py-2 rounded-md bg-gray-500 cursor-pointer hover:scale-110"
+                  onClick={handleUpload}
+                >
+                  Process PDF
+                </span>
+              )}
             </div>
           </div>
         )}
@@ -427,6 +487,19 @@ export default function ChatgptMobile() {
                       </span>
                       {ca1}
                     </div>
+                    {chatloading && ind == currentchatarray?.length - 1 && (
+                      <div className="float-right text-white">
+                        <Bars
+                          height="30"
+                          width="40"
+                          color="#fef9c3"
+                          ariaLabel="bars-loading"
+                          wrapperStyle={{}}
+                          wrapperClass=""
+                          visible={true}
+                        />
+                      </div>
+                    )}
                   </>
                 )}
                 {ind % 2 != 0 && (
