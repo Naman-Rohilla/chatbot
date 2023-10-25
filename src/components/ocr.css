@@ -1,6 +1,11 @@
 .ocrcontainer {
   height: 400px;
   width: 800px;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+.ocr2 {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
 .ocrbox {

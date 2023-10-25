@@ -49,7 +49,7 @@ export default function NavMobile({ targetElement }) {
     <>
       <div
         ref={containerRef}
-        className="z-20 fixed text-white cursor-pointer bg-gray-900 bg-opacity-90 flex justify-between items-center h-20 font-sans w-full"
+        className="removehightlight z-20 fixed text-white cursor-pointer bg-gray-900 bg-opacity-90 flex justify-between items-center h-20 font-sans w-full"
       >
         <div></div>
         <div className="h-full font-styleFont flex items-center">

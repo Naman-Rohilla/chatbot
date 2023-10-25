@@ -1,3 +1,7 @@
+.removehightlight {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
 .drawer3 {
   width: 0;
   position: absolute;

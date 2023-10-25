@@ -128,7 +128,7 @@ export default function Ocr() {
           ) : (
             <div
               //   onClick={handleSpanClick}
-              className="ocrcontainer shadow-xl flex-col border-dotted border border-white cursor-pointer flex justify-center items-center relative"
+              className="ocr2 h-96 w-80 shadow-xl flex-col border-dotted border border-white cursor-pointer flex justify-center items-center relative"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
