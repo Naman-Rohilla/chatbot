@@ -48,7 +48,7 @@ export default function ChatgptWeb() {
         else finalstr = finalstr + "now answer this question:";
         finalstr = finalstr + query;
 
-        const response = await axios.get("https://nr619122.pythonanywhere.com/", {
+        const response = await axios.get("https://flaskserver-production.up.railway.app/", {
           params: {
             param1: finalstr,
           },
@@ -138,7 +138,7 @@ export default function ChatgptWeb() {
 
       try {
         const response = await axios.post(
-          "https://nr619122.pythonanywhere.com/process_pdf_chatbot",
+          "https://flaskserver-production.up.railway.app/process_pdf_chatbot",
           formData,
           {
             headers: {
