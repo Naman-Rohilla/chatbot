@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import HomeWeb from "./homeWeb";
 import HomeMobile from "./homeMobile";
 
-export default function Home() {
+export default function Home({ targetHome }) {
   const [isMobile, setIsMobile] = useState(false);
   const [isTablet, setIsTablet] = useState(false);
 
@@ -25,5 +25,5 @@ export default function Home() {
     };
   }, []);
 
-  return <>{isMobile ? <HomeMobile /> : <HomeWeb />}</>;
+  return <>{isMobile ? <HomeMobile targetHome={targetHome} /> : <HomeWeb targetHome={targetHome} />}</>;
 }

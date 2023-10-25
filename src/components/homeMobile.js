@@ -3,25 +3,25 @@ import "./home.css";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
-export default function HomeMobile() {
+export default function HomeMobile({ targetHome }) {
   const autoPlayInterval = 6000;
 
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  //   useEffect(() => {
-  //     const timer = setInterval(() => {
-  //       setCurrentSlide((prevSlide) => (prevSlide + 1) % 2);
-  //       console.log(currentSlide, "current");
-  //     }, autoPlayInterval);
+    useEffect(() => {
+      const timer = setInterval(() => {
+        setCurrentSlide((prevSlide) => (prevSlide + 1) % 2);
+        console.log(currentSlide, "current");
+      }, autoPlayInterval);
 
-  //     return () => {
-  //       clearInterval(timer);
-  //     };
-  //   }, [autoPlayInterval, 2]);
+      return () => {
+        clearInterval(timer);
+      };
+    }, [autoPlayInterval, 2]);
 
   return (
     <>
-      <div className="mobileHeight relative">
+      <div ref={targetHome} className="mobileHeight relative">
         <div className="h-full w-full overflow overflow-y-visible overflow-x-clip bg-gray-800 absolute flex justify-center items-center">
           <div className="box z-1 "></div>
           <div className="outer-ring z-1"></div>
@@ -341,10 +341,10 @@ export default function HomeMobile() {
             </div>
           </div>
           <div className="flex flex-col z-10 items-center h-full justify-center pb-10">
-            <div className="relative bg-red-300 flex items-center p-2 h-60 w-60 ease-in-out duration-150 hover:scale-105 hover:shadow-xl hover:shadow-gray-900">
+            <Link to="/ocr" className="relative bg-red-300 flex items-center p-2 h-60 w-60 ease-in-out duration-150 hover:scale-105 hover:shadow-xl hover:shadow-gray-900">
               <img src="./ocr.png"></img>
               <span className="dot z-10 h-2 w-6 absolute bg-red-300 rounded-xl -top-2 -left-2"></span>
-            </div>
+            </Link>
             <div className="w-60 text-center">
               <span className="flex justify-center pt-2">OCR</span>
               {/* <span className="flex justify-center">
@@ -689,31 +689,31 @@ export default function HomeMobile() {
           <div className="absolute z-20 top-10 w-full px-5 text-center text-lg text-white">
             Elevating Expertise, One Achievement at a Time.
           </div>
-          <div className="relative hover:border hover:border-gray-500 h-80 w-60 border bg-gray-900 shadow-xl shadow-gray-900">
+          <Link target="_blank" to="https://drive.google.com/file/d/1b1yAG6HJsEhG8emqv_Y6hiDs7LLDEO1y/view?usp=sharing" className="relative hover:border hover:border-gray-500 h-80 w-60 border bg-gray-900 shadow-xl shadow-gray-900">
             <img
               className="cert1 h-80 w-60 bg-white absolute -top-4 -right-4"
               src="./cert1.png"
             ></img>
-          </div>
-          <div className="relative h-80 w-60 border bg-gray-900 shadow-xl hover:border hover:border-gray-500 shadow-gray-900">
+          </Link>
+          <Link target="_blank" to='https://drive.google.com/file/d/1fxOmg-l54g45MGufYORJVembVNyLJvbj/view?usp=sharing' className="relative h-80 w-60 border bg-gray-900 shadow-xl hover:border hover:border-gray-500 shadow-gray-900">
             <img
               className="cert2 h-80 w-60 bg-white absolute -top-4 -right-4"
               src="./cert2.png"
             ></img>
-          </div>
-          <div className="relative h-80 w-60 border bg-gray-900 shadow-xl shadow-gray-900 hover:border hover:border-gray-500">
+          </Link>
+          <Link target="_blank" to="https://drive.google.com/file/d/1FY_qUwnVMGxWm9YXax9iA8SlO4Kxq2Nn/view?usp=sharing" className="relative h-80 w-60 border bg-gray-900 shadow-xl shadow-gray-900 hover:border hover:border-gray-500">
             <img
               className="cert3 h-80 w-60 bg-white absolute -top-4 -right-4"
               src="./cert3.png"
             ></img>
-          </div>
+          </Link>
           <div className="relative h-80 w-60 border bg-gray-900 shadow-xl shadow-gray-900 hover:border hover:border-gray-500">
-            <div className="cert4 flex items-center bg-gray-900 h-80 w-60 absolute -top-4 -right-4">
+            <Link target="_blank" to="https://drive.google.com/file/d/1xO7OsaAVf1DBFcbt9qC2v1WoYU4up3rL/view?usp=sharing" className="cert4 flex items-center bg-gray-900 h-80 w-60 absolute -top-4 -right-4">
               <img
                 className="bg-white h-40 w-60 bg-white"
                 src="./cert4.png"
               ></img>
-            </div>
+            </Link>
           </div>
         </div>
       </div>

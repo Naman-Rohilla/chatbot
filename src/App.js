@@ -1,7 +1,7 @@
 import logo from "./logo.svg";
 import "./App.css";
 import Typewriter from "typewriter-effect";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Navbar from "./components/navBar";
 import Footer from "./components/footer";
 import Home from "./components/home";
@@ -14,11 +14,15 @@ import {
 } from "react-router-dom";
 import Ocr from "./components/ocr";
 import NavMobile from "./components/navMobile";
+import FooterMobile from "./components/footerMobile";
 
 function App() {
   const [intro, setIntro] = useState(true);
 
   const location = useLocation();
+  const targetElement = useRef(null);
+  const targetHome = useRef(null);
+
 
   const isContactRoute = location.pathname === "/about";
   const isOcrRoute = location.pathname === "/ocr";
@@ -69,15 +73,17 @@ function App() {
       ) : (
         <>
           {/* <Router> */}
-          {isMobile ? <NavMobile /> : <Navbar></Navbar>}
+          {isMobile ? <NavMobile targetElement={targetElement} /> : <Navbar targetElement={targetElement} targetHome={targetHome}></Navbar>}
 
           <Routes>
-            <Route exact path="/" element={<Home />} />
+            <Route exact path="/" element={<Home targetHome={targetHome} />} />
             <Route exact path="/about" element={<Chatgpt />} />
             <Route exact path="/ocr" element={<Ocr />} />
             {/* <Route path="/contact" component={Contact} /> */}
           </Routes>
-          {/* {isContactRoute || isOcrRoute ? null : <Footer />} */}
+          {isContactRoute || isOcrRoute ? null : (
+            <>{isMobile ? <FooterMobile targetElement={targetElement} /> : <Footer targetElement={targetElement} />}</>
+          )}
           {/* <div className="h-full w-full text-white bg-black">halsdjasld</div> */}
           {/* </Router> */}
         </>

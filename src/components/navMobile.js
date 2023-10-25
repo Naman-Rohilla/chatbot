@@ -2,9 +2,10 @@ import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import "./navMobile.css";
 
-export default function NavMobile() {
+export default function NavMobile({ targetElement }) {
   const [isOpen3, setIsOpen3] = useState(false);
   const containerRef = useRef(null);
+  const [dropdown, setdropdown] = useState(false);
 
   const toggleDrawer = () => {
     setIsOpen3(!isOpen3);
@@ -37,11 +38,18 @@ export default function NavMobile() {
     };
   }, [toggleDrawer]);
 
+  const scrollToFooter = () => {
+    targetElement?.current?.scrollIntoView({
+      behavior: 'smooth',
+    });
+    toggleDrawer()
+  };
+
   return (
     <>
       <div
         ref={containerRef}
-        className="z-20 absolute text-white cursor-pointer bg-gray-900 bg-opacity-90 flex justify-between items-center h-20 font-sans w-full"
+        className="z-50 fixed text-white cursor-pointer bg-gray-900 bg-opacity-90 flex justify-between items-center h-20 font-sans w-full"
       >
         <div></div>
         <div className="h-full font-styleFont flex items-center">
@@ -86,27 +94,138 @@ export default function NavMobile() {
           )}
         </div>
         <div
-          className={`drawer3 ${isOpen3 ? "open" : ""} font-sans flex flex-col`}
+          className={`drawer3 ${
+            isOpen3 ? "open" : ""
+          } font-sans flex flex-col  h-screen justify-between`}
         >
-          <Link
-            to="/"
-            onClick={toggleDrawer}
-            className="relative ease-out transition group hover:text-gray-50 py-1 px-4 hover:border hover:border-dotted hover:border-white"
-          >
-            <span className="h-2 w-2 bg-white absolute invisible group-hover:visible rounded-full -end-1 animate-ping -top-1"></span>
-            <Link to="/">Home</Link>
-          </Link>
-          <Link
-            to="/about"
-            onClick={toggleDrawer}
-            className="relative ease-out transition group duration-150 hover:text-gray-50 py-1 px-4 hover:border hover:border-dotted hover:border-white"
-          >
-            <span className="h-2 w-2 bg-white absolute invisible group-hover:visible rounded-full -end-1 animate-ping -top-1"></span>
-            <Link to="/about">Products</Link>
-          </Link>
-          <div className="relative ease-out transition group duration-150 hover:text-gray-50 py-1 px-4 hover:border hover:border-dotted hover:border-white">
-            <span className="h-2 w-2 bg-white absolute invisible group-hover:visible rounded-full -end-1 animate-ping -top-1"></span>
-            Contact
+          <div className="w-full flex flex-col items-center">
+            <div
+              onClick={() => setIsOpen3(false)}
+              className="absolute top-2 left-2"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="40px"
+                height="40px"
+                viewBox="0 0 24 24"
+                fill="none"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M12 22C7.28595 22 4.92893 22 3.46447 20.5355C2 19.0711 2 16.714 2 12C2 7.28595 2 4.92893 3.46447 3.46447C4.92893 2 7.28595 2 12 2C16.714 2 19.0711 2 20.5355 3.46447C22 4.92893 22 7.28595 22 12C22 16.714 22 19.0711 20.5355 20.5355C19.0711 22 16.714 22 12 22ZM8.96965 8.96967C9.26254 8.67678 9.73742 8.67678 10.0303 8.96967L12 10.9394L13.9696 8.96969C14.2625 8.6768 14.7374 8.6768 15.0303 8.96969C15.3232 9.26258 15.3232 9.73746 15.0303 10.0303L13.0606 12L15.0303 13.9697C15.3232 14.2625 15.3232 14.7374 15.0303 15.0303C14.7374 15.3232 14.2625 15.3232 13.9696 15.0303L12 13.0607L10.0303 15.0303C9.73744 15.3232 9.26256 15.3232 8.96967 15.0303C8.67678 14.7374 8.67678 14.2626 8.96967 13.9697L10.9393 12L8.96965 10.0303C8.67676 9.73744 8.67676 9.26256 8.96965 8.96967Z"
+                  fill="white"
+                />
+              </svg>
+            </div>
+            <Link
+              to="/"
+              onClick={toggleDrawer}
+              className="mt-20 space-x-4 relative w-3/4 flex justify-center ease-out transition group hover:text-gray-50 py-4 px-4 border-t border-dotted border-white"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="white"
+                height="20px"
+                width="20px"
+                version="1.1"
+                id="Capa_1"
+                viewBox="0 0 360 360"
+              >
+                <path d="M352.163,163.115L198.919,9.871c-10.449-10.449-27.389-10.449-37.838,0L7.837,163.115c-7.652,7.652-9.94,19.16-5.8,29.158  c4.142,9.998,13.898,16.516,24.719,16.516h20.762v114.574c0,19.112,15.493,34.603,34.603,34.603h195.758  c19.11,0,34.603-15.492,34.603-34.603V208.789h20.762c10.821,0,20.578-6.519,24.719-16.516  C362.103,182.275,359.815,170.767,352.163,163.115z M220.431,307.785h-80.862v-45.583c0-22.33,18.102-40.431,40.431-40.431  s40.431,18.1,40.431,40.431V307.785z" />
+              </svg>
+              <Link to="/">Home</Link>
+            </Link>
+            <Link
+              to="/about"
+              // onClick={toggleDrawer}
+              className="relative w-3/4 flex flex-col justify-center ease-out transition group duration-150 hover:text-gray-50 py-4 border-t border-dotted border-white"
+            >
+              <div className="flex w-full justify-center space-x-4">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="28px"
+                  height="28px"
+                  viewBox="0 0 64 64"
+                  fill="none"
+                  stroke="white"
+                >
+                  <rect x="8" y="8" width="12" height="12" />
+                  <rect x="26" y="8" width="12" height="12" />
+                  <rect x="26" y="44" width="12" height="12" />
+                  <rect x="44" y="8" width="12" height="12" />
+                  <rect x="8" y="26" width="12" height="12" />
+                  <rect x="26" y="26" width="12" height="12" />
+                  <rect x="44" y="26" width="12" height="12" />
+                  <rect x="8" y="44" width="12" height="12" />
+                  <rect x="44" y="44" width="12" height="12" />
+                </svg>
+                <Link>Products</Link>
+                <span onClick={() => setdropdown(!dropdown)}>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20px"
+                    height="20px"
+                    viewBox="0 0 1024 1024"
+                    class="icon"
+                    version="1.1"
+                  >
+                    <path
+                      d="M903.232 256l56.768 50.432L512 768 64 306.432 120.768 256 512 659.072z"
+                      fill="white"
+                    />
+                  </svg>
+                </span>
+              </div>
+              {dropdown && (
+                <Link
+                  to="/about"
+                  onClick={toggleDrawer}
+                  className="ease-in-out transition delay-105 duration-100 flex justify-center w-full pl-12 pt-6 space-x-2"
+                >
+                  <span>-</span>
+                  <span>ChatBot</span>
+                </Link>
+              )}
+              {dropdown && (
+                <Link
+                  to="/ocr"
+                  onClick={toggleDrawer}
+                  className="ease-in-out transition delay-105 duration-100 flex justify-center w-full pl-14 pt-6 space-x-2"
+                >
+                  <span>-</span>
+                  <span>OCR PDF</span>
+                </Link>
+              )}
+            </Link>
+            <div onClick={scrollToFooter}  className="relative space-x-4  w-3/4 flex justify-center ease-out transition group duration-150 hover:text-gray-50 py-4 px-4 border-y border-dotted border-white">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="white"
+                height="24px"
+                width="24px"
+                version="1.1"
+                id="Filled_Icons"
+                x="0px"
+                y="0px"
+                viewBox="0 0 24 24"
+                enable-background="new 0 0 24 24"
+              >
+                <g id="Contact-Us-Filled">
+                  <path d="M1,1v17h4v4l8.5-4H22V1H1z M8,11H5V8h3V11z M13,11h-3V8h3V11z M18,11h-3V8h3V11z" />
+                </g>
+              </svg>
+              <span>Contact</span>
+            </div>
+          </div>
+          <div className="mb-5 font-styleFont flex items-center space-x-5">
+            <div className="h-10 w-10 border-dotted border border-white rounded-full">
+              <img
+                className="rounded-full h-10 w-10 p-0.5"
+                src="./naman.jpg"
+              ></img>
+            </div>
+            <span>Naman Rohilla</span>
           </div>
         </div>
       </div>
