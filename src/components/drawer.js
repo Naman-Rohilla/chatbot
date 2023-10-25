@@ -40,7 +40,7 @@ function Drawer({ file, setNumPages, setPageNumber, numPages, pageNumber, left }
 
   return (
     <>
-      <div className={`drawer ${isOpen ? "open" : ""}`}>
+      <div className={`drawer ${isOpen ? "open" : ""} z-50`}>
         <Document
           file={file}
           //   height={300}
@@ -112,7 +112,7 @@ function Drawer({ file, setNumPages, setPageNumber, numPages, pageNumber, left }
 
       <button
         onClick={toggleDrawer}
-        className="h-10 w-20 text-black animate-pulse z-20 toggle-button"
+        className="z-50 h-10 w-20 text-black animate-pulse z-20 toggle-button"
       >
         {isOpen ? (
           <svg

@@ -24,6 +24,7 @@ export default function ChatgptMobile() {
   const fileInputRef = useRef(null);
   const [message, setmessage] = useState(false);
   const [numPages, setNumPages] = useState(null);
+  const containerRef = useRef(null);
   const [pageNumber, setPageNumber] = useState(1);
   const [chatloading, setchatloading] = useState(false);
   const [processloading, setprocessloading] = useState(false);
@@ -236,9 +237,36 @@ export default function ChatgptMobile() {
     setIsOpen2(!isOpen2);
   };
 
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(event.target)
+      ) {
+        setIsOpen2(false);
+      }
+    }
+
+    function handleEscapeKey(event) {
+      if (event.key === "Escape") {
+        setIsOpen2(false);
+      }
+    }
+
+    // Attach the event listeners when the component mounts
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keydown", handleEscapeKey);
+
+    // Remove the event listeners when the component unmounts
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleEscapeKey);
+    };
+  }, [toggleDrawer2]);
+
   return (
     <>
-      <div className="h-screen bg-gray-800 flex">
+      <div  className="h-screen bg-gray-800 flex">
       {message && (
           <div className="z-50 absolute h-full w-full flex justify-center items-center">
             <div className="flex justify-center items-center bg-black text-white h-full w-full bg-opacity-50">
@@ -333,7 +361,7 @@ export default function ChatgptMobile() {
             </svg>
           )}
         </button>
-        <div className={`drawer2 ${isOpen2 ? "open" : ""} z-50`}>
+        <div ref={containerRef} className={`drawer2 ${isOpen2 ? "open" : ""} z-50`}>
           <div className="flex flex-col h-screen items-center justify-between bg-gray-900 w-80">
             <div className="w-full h-screen space-y-2 flex flex-col items-center overflow-y-scroll">
               <div className="w-full space-y-2 flex flex-col items-center py-4">
