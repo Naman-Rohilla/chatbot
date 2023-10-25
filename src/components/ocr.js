@@ -26,7 +26,7 @@ export default function Ocr() {
 
       try {
         const response = await axios.post(
-          "https://nr619122.pythonanywhere.com/process_pdf",
+          "https://flaskserver-production.up.railway.app/process_pdf",
           formData,
           {
             headers: {

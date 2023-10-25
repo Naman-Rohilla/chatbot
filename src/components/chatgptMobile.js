@@ -50,7 +50,7 @@ export default function ChatgptMobile() {
         else finalstr = finalstr + "now answer this question:";
         finalstr = finalstr + query;
 
-        const response = await axios.get("http://127.0.0.1:5000/", {
+        const response = await axios.get("https://flaskserver-production.up.railway.app/", {
           params: {
             param1: finalstr,
           },
@@ -138,7 +138,7 @@ export default function ChatgptMobile() {
 
       try {
         const response = await axios.post(
-          "http://127.0.0.1:5000/process_pdf_chatbot",
+          "https://flaskserver-production.up.railway.app/process_pdf_chatbot",
           formData,
           {
             headers: {
