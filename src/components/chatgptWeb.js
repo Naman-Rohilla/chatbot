@@ -36,7 +36,7 @@ export default function ChatgptWeb() {
       setQuery("");
       setCurrentchatarray([...currentchatarray, query]);
       try {
-        let finalstr = "You can use this paragraph for refernce:";
+        let finalstr = "Your name is Kush the most intelligent guy, If someone greets you you also greets him. Now,You can use this paragraph for refernce:";
         if (query.length < 300) {
           for (var i = 0; i < currentchatarray.length; i++) {
             finalstr = finalstr + currentchatarray[i] + "\n";
