@@ -39,7 +39,7 @@ export default function ChatgptMobile() {
       setQuery("");
       setCurrentchatarray([...currentchatarray, query]);
       try {
-        let finalstr = "Your name is Kush the most intelligent guy, If someone greets you you also greets the same without the name. You are also a expert at solving mathematical problem. Now, You can use this paragraph for refernce:";
+        let finalstr = "If someone greets you you also greets the same without the name.Your name is Kush the most intelligent guy. You are also a expert at solving mathematical problem. Now, You can use this paragraph for refernce:";
         if (query.length < 300) {
           for (var i = 0; i < currentchatarray.length; i++) {
             finalstr = finalstr + currentchatarray[i] + "\n";
