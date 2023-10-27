@@ -36,7 +36,7 @@ export default function ChatgptWeb() {
       setQuery("");
       setCurrentchatarray([...currentchatarray, query]);
       try {
-        let finalstr = "Your name is Kush the most intelligent guy, If someone greets you you also greets the same. Now,You can use this paragraph for refernce:";
+        let finalstr = "Now,You can use this paragraph for refernce:";
         if (query.length < 300) {
           for (var i = 0; i < currentchatarray.length; i++) {
             finalstr = finalstr + currentchatarray[i] + "\n";
@@ -62,8 +62,8 @@ export default function ChatgptWeb() {
         );
 
         var tempdata =
-          response && response?.data && response?.data?.length > 0
-            ? response.data
+          response && response?.data
+            ? response?.data?.toString()
             : "response not fetched";
 
         console.log(response, "naman yyy1111");

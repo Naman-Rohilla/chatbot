@@ -137,9 +137,9 @@ export default function NavMobile({ targetElement }) {
               <Link to="/">Home</Link>
             </Link>
             <Link
-              to="/chat-bot"
+              
               // onClick={toggleDrawer}
-              className="relative w-3/4 flex flex-col justify-center ease-out transition group duration-150 hover:text-gray-50 py-4 border-t border-dotted border-white"
+              className="relative w-3/4 flex flex-col justify-center pl-12 ease-out transition group duration-150 hover:text-gray-50 py-4 border-t border-dotted border-white"
             >
               <div className="flex w-full justify-center space-x-4">
                 <svg
@@ -179,11 +179,11 @@ export default function NavMobile({ targetElement }) {
               </div>
               {dropdown && (
                 <Link
-                  to="chat-bott"
+                  to="chat-bot"
                   onClick={toggleDrawer}
-                  className="ease-in-out transition delay-105 duration-100 flex justify-center w-full pl-12 pt-6 space-x-2"
+                  className="ease-in-out transition delay-105 duration-100 flex justify-center w-full pt-6 space-x-2"
                 >
-                  <span>-</span>
+                  {/* <span>-</span> */}
                   <span>ChatBot</span>
                 </Link>
               )}
@@ -191,9 +191,9 @@ export default function NavMobile({ targetElement }) {
                 <Link
                   to="/ocr"
                   onClick={toggleDrawer}
-                  className="ease-in-out transition delay-105 duration-100 flex justify-center w-full pl-14 pt-6 space-x-2"
+                  className="ease-in-out transition delay-105 duration-100 flex justify-center w-full pl-2 pt-6 space-x-2"
                 >
-                  <span>-</span>
+                  {/* <span>-</span> */}
                   <span>OCR PDF</span>
                 </Link>
               )}

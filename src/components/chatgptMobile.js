@@ -39,7 +39,7 @@ export default function ChatgptMobile() {
       setQuery("");
       setCurrentchatarray([...currentchatarray, query]);
       try {
-        let finalstr = "Your name is Kush the most intelligent guy. You are also a expert at solving mathematical problem. Now, You can use this paragraph for refernce:";
+        let finalstr = "Now, You can use this paragraph for refernce:";
         if (query.length < 300) {
           for (var i = 0; i < currentchatarray.length; i++) {
             finalstr = finalstr + currentchatarray[i] + "\n";
@@ -64,7 +64,10 @@ export default function ChatgptMobile() {
           }
         );
 
-        var tempdata = response.data;
+        var tempdata =
+        response && response?.data
+          ? response?.data?.toString()
+          : "response not fetched";
 
         setCurrentchatarray([...currentchatarray, query, tempdata]);
 
