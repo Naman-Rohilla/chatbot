@@ -8,6 +8,7 @@
 .navbar.scrolled {
   background-color: #0f172a; /* Change this to your desired color */
   -webkit-tap-highlight-color: rgba(0,0,0,0);
+  color: white !important;
 }
 
 .drawer3 {
