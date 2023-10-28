@@ -86,7 +86,7 @@ export default function NavMobile({ targetElement, currentSlide }) {
               src="./naman.jpg"
             ></img>
           </div>
-          <span className={currentSlide == 0 ? "pl-2 font-bold text-gray-800" : "pl-2 font-bold"}>Naman Rohilla</span>
+          <span className={currentSlide == 0 && !scrolling && navstate == "/" ? "pl-2 font-bold text-gray-800" : "pl-2 font-bold"}>Naman Rohilla</span>
         </div>
         <div onClick={toggleDrawer} className="pr-3 cursor-pointer">
           {isOpen3 ? (
@@ -116,7 +116,7 @@ export default function NavMobile({ targetElement, currentSlide }) {
             >
               <path
                 d="M19 16a3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3zm0 13a3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3zm0-26a3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3z"
-                fill={currentSlide == 0 ? "black" : "white"}
+                fill={currentSlide == 0 && !scrolling && navstate == "/" ? "black" : "white"}
               />
             </svg>
           )}
