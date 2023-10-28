@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./navMobile.css";
 
-export default function NavMobile({ targetElement }) {
+export default function NavMobile({ targetElement, currentSlide }) {
   const [isOpen3, setIsOpen3] = useState(false);
   const containerRef = useRef(null);
   var location = useLocation();
@@ -86,7 +86,7 @@ export default function NavMobile({ targetElement }) {
               src="./naman.jpg"
             ></img>
           </div>
-          <span className="pl-2 font-bold">Naman Rohilla</span>
+          <span className={currentSlide == 0 ? "pl-2 font-bold text-gray-800" : "pl-2 font-bold"}>Naman Rohilla</span>
         </div>
         <div onClick={toggleDrawer} className="pr-3 cursor-pointer">
           {isOpen3 ? (
@@ -112,10 +112,11 @@ export default function NavMobile({ targetElement }) {
               width="20px"
               height="20px"
               viewBox="0 0 32 32"
+              
             >
               <path
                 d="M19 16a3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3zm0 13a3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3zm0-26a3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3z"
-                fill="white"
+                fill={currentSlide == 0 ? "black" : "white"}
               />
             </svg>
           )}

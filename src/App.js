@@ -26,6 +26,7 @@ function App() {
 
   const isContactRoute = location.pathname === "/chat-bot";
   const isOcrRoute = location.pathname === "/ocr";
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   const [isMobile, setIsMobile] = useState(false);
   const [isTablet, setIsTablet] = useState(false);
@@ -73,10 +74,10 @@ function App() {
       ) : (
         <>
           {/* <Router> */}
-          {isMobile ? <NavMobile targetElement={targetElement} /> : <Navbar targetElement={targetElement} targetHome={targetHome}></Navbar>}
+          {isMobile ? <NavMobile targetElement={targetElement} currentSlide={currentSlide} /> : <Navbar targetElement={targetElement} targetHome={targetHome}></Navbar>}
 
           <Routes>
-            <Route exact path="/" element={<Home targetHome={targetHome} />} />
+            <Route exact path="/" element={<Home targetHome={targetHome} currentSlide={currentSlide} setCurrentSlide={setCurrentSlide} />} />
             <Route exact path="/chat-bot" element={<Chatgpt />} />
             <Route exact path="/ocr" element={<Ocr />} />
             {/* <Route path="/contact" component={Contact} /> */}

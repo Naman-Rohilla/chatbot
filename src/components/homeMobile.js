@@ -3,10 +3,10 @@ import "./home.css";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
-export default function HomeMobile({ targetHome }) {
+export default function HomeMobile({ targetHome, currentSlide, setCurrentSlide }) {
   const [autoPlayInterval, setautoPlayInterval] = useState(6000);
 
-  const [currentSlide, setCurrentSlide] = useState(0);
+  
   const [isHovered, setIsHovered] = useState(false);
 
   let timer;
