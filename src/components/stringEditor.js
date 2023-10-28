@@ -98,7 +98,7 @@ export default function StringEditor({ text }) {
 
   const formattedText = formatText(text);
 
-  console.log(formattedText, "naam");
+  // console.log(formattedText, "naam");
   
 
   return (

@@ -233,7 +233,7 @@ export default function ChatgptWeb() {
     console.log("hh");
   };
 
-  console.log(chatarray, "Chatarray");
+  // console.log(chatarray, "Chatarray");
 
   return (
     <>

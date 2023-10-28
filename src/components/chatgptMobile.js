@@ -234,7 +234,7 @@ export default function ChatgptMobile() {
     console.log("hh");
   };
 
-  console.log(chatarray, "Chatarray");
+  // console.log(chatarray, "Chatarray");
 
   const toggleDrawer2 = () => {
     setIsOpen2(!isOpen2);

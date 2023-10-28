@@ -76,7 +76,7 @@ export default function NavMobile({ targetElement }) {
     <>
       <div
         ref={containerRef}
-        className={`${navbarClasses} z-20 fixed text-white cursor-pointer  bg-opacity-90 flex justify-between items-center h-20 font-sans w-full`}
+        className={navstate == "/chat-bot" ? `${navbarClasses} z-20 fixed text-white cursor-pointer  bg-opacity-90 flex justify-between items-center h-20 font-sans w-full` : `${navbarClasses} z-30 fixed text-white cursor-pointer  bg-opacity-90 flex justify-between items-center h-20 font-sans w-full`}
       >
         <div className={navstate == "/chat-bot" ? "flex" : "hidden"}></div>
         <div className="pl-2 h-full font-styleFont text-inherit flex items-center">

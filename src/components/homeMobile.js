@@ -64,7 +64,7 @@ export default function HomeMobile({ targetHome }) {
             </div>
           </div>
         </div>
-        <div className="z-50 flex space-x-1 absolute right-5 bottom-2 text-white">
+        <div className="z-20 flex space-x-1 absolute right-5 bottom-2 text-white">
           <span>
             {currentSlide == 0 ? (
               <svg
