@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./navMobile.css";
 
-export default function NavMobile({ targetElement, currentSlide }) {
+export default function NavMobile({ targetElement, targetHome, currentSlide }) {
   const [isOpen3, setIsOpen3] = useState(false);
   const containerRef = useRef(null);
   var location = useLocation();
@@ -30,9 +30,19 @@ export default function NavMobile({ targetElement, currentSlide }) {
 
   var navbarClasses = scrolling ? "navbar scrolled" : "navbar";
 
+  const scrollToHome = () => {
+    targetHome?.current?.scrollIntoView({
+      behavior: "smooth",
+    });
+  };
+
+
   const toggleDrawer = () => {
     setIsOpen3(!isOpen3);
+    
   };
+
+  
 
   useEffect(() => {
     function handleClickOutside(event) {
@@ -71,6 +81,12 @@ export default function NavMobile({ targetElement, currentSlide }) {
   useEffect(() => {
     setnavstate(location.pathname);
   }, [location]);
+
+  const handleHome = () => {
+    toggleDrawer()
+    scrollToHome()
+
+  }
 
   return (
     <>
@@ -148,7 +164,7 @@ export default function NavMobile({ targetElement, currentSlide }) {
             </div>
             <Link
               to="/"
-              onClick={toggleDrawer}
+              onClick={handleHome}
               className="mt-20 space-x-4 relative w-3/4 flex justify-center ease-out transition group hover:text-gray-50 py-4 px-4 border-t border-dotted border-white"
             >
               <svg

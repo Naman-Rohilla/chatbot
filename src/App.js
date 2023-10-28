@@ -74,7 +74,7 @@ function App() {
       ) : (
         <>
           {/* <Router> */}
-          {isMobile ? <NavMobile targetElement={targetElement} currentSlide={currentSlide} /> : <Navbar targetElement={targetElement} targetHome={targetHome}></Navbar>}
+          {isMobile ? <NavMobile targetElement={targetElement} targetHome={targetHome} currentSlide={currentSlide} /> : <Navbar targetElement={targetElement} targetHome={targetHome}></Navbar>}
 
           <Routes>
             <Route exact path="/" element={<Home targetHome={targetHome} currentSlide={currentSlide} setCurrentSlide={setCurrentSlide} />} />

@@ -40,7 +40,7 @@ export default function HomeMobile({ targetHome, currentSlide, setCurrentSlide }
 
   return (
     <>
-      <div ref={targetHome} className="mobileHeight relative">
+      <div ref={targetHome} className="mobileHeight relative font-mono">
         <div className="h-full w-full overflow overflow-y-visible overflow-x-clip bg-gray-800 absolute flex justify-center items-center">
           <div className="box z-1 "></div>
           <div className="outer-ring z-1"></div>
