@@ -4,20 +4,39 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
 export default function HomeMobile({ targetHome }) {
-  const autoPlayInterval = 6000;
+  const [autoPlayInterval, setautoPlayInterval] = useState(6000);
 
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
 
-    useEffect(() => {
-      const timer = setInterval(() => {
-        setCurrentSlide((prevSlide) => (prevSlide + 1) % 2);
-        console.log(currentSlide, "current");
-      }, autoPlayInterval);
+  let timer;
 
-      return () => {
-        clearInterval(timer);
-      };
-    }, [autoPlayInterval, 2]);
+  const handleNextSlide = () => {
+    clearInterval(timer);
+
+    setCurrentSlide((prevSlide) => (prevSlide + 1) % 2);
+    console.log(currentSlide, "namans");
+    setautoPlayInterval(6001);
+    // clearInterval(timer);
+  };
+
+  useEffect(() => {
+    timer = setInterval(() => {
+      setCurrentSlide((prevSlide) => (prevSlide + 1) % 2);
+      console.log(currentSlide, "current");
+    }, autoPlayInterval);
+    return () => {
+      clearInterval(timer);
+    };
+  }, [autoPlayInterval]);
+
+  const handleHover = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
 
   return (
     <>
@@ -45,6 +64,74 @@ export default function HomeMobile({ targetHome }) {
             </div>
           </div>
         </div>
+        <div className="z-50 flex space-x-1 absolute right-5 bottom-2 text-white">
+          <span>
+            {currentSlide == 0 ? (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="28px"
+                height="28px"
+                viewBox="0 0 15 15"
+                fill="none"
+              >
+                <path
+                  d="M9.875 7.5C9.875 8.81168 8.81168 9.875 7.5 9.875C6.18832 9.875 5.125 8.81168 5.125 7.5C5.125 6.18832 6.18832 5.125 7.5 5.125C8.81168 5.125 9.875 6.18832 9.875 7.5Z"
+                  fill="white"
+                />
+              </svg>
+            ) : (
+              <div onClick={handleNextSlide}>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="28px"
+                  height="28px"
+                  viewBox="0 0 15 15"
+                  fill="none"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M7.5 9.125C8.39746 9.125 9.125 8.39746 9.125 7.5C9.125 6.60254 8.39746 5.875 7.5 5.875C6.60254 5.875 5.875 6.60254 5.875 7.5C5.875 8.39746 6.60254 9.125 7.5 9.125ZM7.5 10.125C8.94975 10.125 10.125 8.94975 10.125 7.5C10.125 6.05025 8.94975 4.875 7.5 4.875C6.05025 4.875 4.875 6.05025 4.875 7.5C4.875 8.94975 6.05025 10.125 7.5 10.125Z"
+                    fill="white"
+                  />
+                </svg>
+              </div>
+            )}
+          </span>
+          <span>
+            {currentSlide == 1 ? (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="28px"
+                height="28px"
+                viewBox="0 0 15 15"
+                fill="none"
+              >
+                <path
+                  d="M9.875 7.5C9.875 8.81168 8.81168 9.875 7.5 9.875C6.18832 9.875 5.125 8.81168 5.125 7.5C5.125 6.18832 6.18832 5.125 7.5 5.125C8.81168 5.125 9.875 6.18832 9.875 7.5Z"
+                  fill="white"
+                />
+              </svg>
+            ) : (
+              <span onClick={handleNextSlide}>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="28px"
+                  height="28px"
+                  viewBox="0 0 15 15"
+                  fill="none"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M7.5 9.125C8.39746 9.125 9.125 8.39746 9.125 7.5C9.125 6.60254 8.39746 5.875 7.5 5.875C6.60254 5.875 5.875 6.60254 5.875 7.5C5.875 8.39746 6.60254 9.125 7.5 9.125ZM7.5 10.125C8.94975 10.125 10.125 8.94975 10.125 7.5C10.125 6.05025 8.94975 4.875 7.5 4.875C6.05025 4.875 4.875 6.05025 4.875 7.5C4.875 8.94975 6.05025 10.125 7.5 10.125Z"
+                    fill="white"
+                  />
+                </svg>
+              </span>
+            )}
+          </span>
+        </div>
         <div className="z-10 w-full absolute overflow-y-visible overflow-x-clip bg-transparent h-screen flex flex-col justify-between text-white items-center">
           <div className="border-gray-400 -top-16 animate-spin-slow-slow h-40 w-40 rounded-full border-2 border-dotted absolute"></div>
           <div className="outer-ring_2 opacity-20 z-1 drop-shadow-lg shadow-xl shadow-black relative"></div>
@@ -60,13 +147,13 @@ export default function HomeMobile({ targetHome }) {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1 }}
-              className="relative pt-16"
+              className="relative w-full bg-opacity-95 border-gray-900 flex justify-center items-center border-4 h-1/2 bg-gray-900"
             >
-              <div className="absolute z-2 -left-10 h-40 w-40 rounded-full bg-gradient-to-r animate-spin-slow from-gray-200 via-gray-300 to-gray-400 opacity-80"></div>
-              <div className="absolute z-2 left-20 -bottom-10 h-40 w-40 rounded-full animate-spin-slow bg-gradient-to-r from-blue-200 via-blue-300 to-blue-400 opacity-80"></div>
-              <div className="absolute z-2 -right-10 bottom-20 h-40 w-40 rounded-full animate-spin-slow bg-gradient-to-r from-lime-50 via-lime-100 to-lime-200 opacity-80"></div>
+              {/* <div className="absolute z-2 left-10 h-20 w-20 rounded-full bg-gradient-to-r animate-spin-slow from-gray-200 via-gray-300 to-gray-400 opacity-80"></div> */}
+              {/* <div className="absolute z-2 left-30 bottom-0 h-20 w-20 rounded-full animate-spin-slow bg-gradient-to-r from-blue-200 via-blue-300 to-blue-400 opacity-80"></div> */}
+              {/* <div className="absolute z-2 right-10 bottom-40 h-20 w-20 rounded-full animate-spin-slow bg-gradient-to-r from-lime-50 via-lime-100 to-lime-200 opacity-80"></div> */}
               <img
-                className="h-80 w-80 rounded-full drop-shadow-lg saturate-150 shadow-md shadow-cyan-500/50  sepia"
+                className="drop-shadow-lg saturate-150 shadow-md shadow-black-600/50"
                 src="./naman_1232.jpg"
               ></img>
             </motion.div>
@@ -79,7 +166,7 @@ export default function HomeMobile({ targetHome }) {
               transition={{ duration: 1 }}
               className="relative px-10"
             >
-              <img className="h-80 w-96 scale-110" src="./1_2.png"></img>
+              <img className="pt-10" src="./1_2.png"></img>
             </motion.div>
           )}
           {currentSlide == 0 && (
@@ -89,7 +176,7 @@ export default function HomeMobile({ targetHome }) {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1 }}
               id={`slider-item ${currentSlide == 0 ? "active" : ""}`}
-              className="w-full flex flex-col mb-16 z-10 px-4"
+              className="w-full pb-5 flex flex-col justify-center z-10 px-4"
             >
               <span className="text-5xl font-bold">Let's Connect</span>
               <span className="text-xl pt-4 text-gray-400">
@@ -253,7 +340,7 @@ export default function HomeMobile({ targetHome }) {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1 }}
               id={`slider-item ${currentSlide == 1 ? "active" : ""}`}
-              className="w-full flex flex-col z-10 px-4"
+              className="w-full pb-5 flex flex-col z-10 px-4"
             >
               <span className="text-5xl font-bold">
                 Writing better with our AI
@@ -341,7 +428,10 @@ export default function HomeMobile({ targetHome }) {
             </div>
           </div>
           <div className="flex flex-col z-10 items-center h-full justify-center pb-10">
-            <Link to="/ocr" className="relative bg-red-300 flex items-center p-2 h-60 w-60 ease-in-out duration-150 hover:scale-105 hover:shadow-xl hover:shadow-gray-900">
+            <Link
+              to="/ocr"
+              className="relative bg-red-300 flex items-center p-2 h-60 w-60 ease-in-out duration-150 hover:scale-105 hover:shadow-xl hover:shadow-gray-900"
+            >
               <img src="./ocr.png"></img>
               <span className="dot z-10 h-2 w-6 absolute bg-red-300 rounded-xl -top-2 -left-2"></span>
             </Link>
@@ -689,26 +779,42 @@ export default function HomeMobile({ targetHome }) {
           <div className="absolute z-20 top-10 w-full px-5 text-center text-lg text-white">
             Elevating Expertise, One Achievement at a Time.
           </div>
-          <Link target="_blank" to="https://drive.google.com/file/d/1b1yAG6HJsEhG8emqv_Y6hiDs7LLDEO1y/view?usp=sharing" className="relative hover:border hover:border-gray-500 h-80 w-60 border bg-gray-900 shadow-xl shadow-gray-900">
+          <Link
+            target="_blank"
+            to="https://drive.google.com/file/d/1b1yAG6HJsEhG8emqv_Y6hiDs7LLDEO1y/view?usp=sharing"
+            className="relative hover:border hover:border-gray-500 h-80 w-60 border bg-gray-900 shadow-xl shadow-gray-900"
+          >
             <img
               className="cert1 h-80 w-60 bg-white absolute -top-4 -right-4"
               src="./cert1.png"
             ></img>
           </Link>
-          <Link target="_blank" to='https://drive.google.com/file/d/1fxOmg-l54g45MGufYORJVembVNyLJvbj/view?usp=sharing' className="relative h-80 w-60 border bg-gray-900 shadow-xl hover:border hover:border-gray-500 shadow-gray-900">
+          <Link
+            target="_blank"
+            to="https://drive.google.com/file/d/1fxOmg-l54g45MGufYORJVembVNyLJvbj/view?usp=sharing"
+            className="relative h-80 w-60 border bg-gray-900 shadow-xl hover:border hover:border-gray-500 shadow-gray-900"
+          >
             <img
               className="cert2 h-80 w-60 bg-white absolute -top-4 -right-4"
               src="./cert2.png"
             ></img>
           </Link>
-          <Link target="_blank" to="https://drive.google.com/file/d/1FY_qUwnVMGxWm9YXax9iA8SlO4Kxq2Nn/view?usp=sharing" className="relative h-80 w-60 border bg-gray-900 shadow-xl shadow-gray-900 hover:border hover:border-gray-500">
+          <Link
+            target="_blank"
+            to="https://drive.google.com/file/d/1FY_qUwnVMGxWm9YXax9iA8SlO4Kxq2Nn/view?usp=sharing"
+            className="relative h-80 w-60 border bg-gray-900 shadow-xl shadow-gray-900 hover:border hover:border-gray-500"
+          >
             <img
               className="cert3 h-80 w-60 bg-white absolute -top-4 -right-4"
               src="./cert3.png"
             ></img>
           </Link>
           <div className="relative h-80 w-60 border bg-gray-900 shadow-xl shadow-gray-900 hover:border hover:border-gray-500">
-            <Link target="_blank" to="https://drive.google.com/file/d/1xO7OsaAVf1DBFcbt9qC2v1WoYU4up3rL/view?usp=sharing" className="cert4 flex items-center bg-gray-900 h-80 w-60 absolute -top-4 -right-4">
+            <Link
+              target="_blank"
+              to="https://drive.google.com/file/d/1xO7OsaAVf1DBFcbt9qC2v1WoYU4up3rL/view?usp=sharing"
+              className="cert4 flex items-center bg-gray-900 h-80 w-60 absolute -top-4 -right-4"
+            >
               <img
                 className="bg-white h-40 w-60 bg-white"
                 src="./cert4.png"

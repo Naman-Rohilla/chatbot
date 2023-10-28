@@ -1,11 +1,34 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./navMobile.css";
 
 export default function NavMobile({ targetElement }) {
   const [isOpen3, setIsOpen3] = useState(false);
   const containerRef = useRef(null);
+  var location = useLocation();
   const [dropdown, setdropdown] = useState(false);
+  const [scrolling, setScrolling] = useState(false);
+  const [navstate, setnavstate] = useState(location.pathname);
+
+  useEffect(() => {
+    // Add an event listener to handle scrolling
+    window.addEventListener("scroll", handleScroll);
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const handleScroll = () => {
+    if (window.scrollY > 50) {
+      setScrolling(true);
+    } else {
+      setScrolling(false);
+    }
+  };
+
+  var navbarClasses = scrolling ? "navbar scrolled" : "navbar";
 
   const toggleDrawer = () => {
     setIsOpen3(!isOpen3);
@@ -45,21 +68,25 @@ export default function NavMobile({ targetElement }) {
     toggleDrawer()
   };
 
+  useEffect(() => {
+    setnavstate(location.pathname);
+  }, [location]);
+
   return (
     <>
       <div
         ref={containerRef}
-        className="removehightlight z-20 fixed text-white cursor-pointer bg-gray-900 bg-opacity-90 flex justify-between items-center h-20 font-sans w-full"
+        className={`${navbarClasses} z-20 fixed text-white cursor-pointer  bg-opacity-90 flex justify-between items-center h-20 font-sans w-full`}
       >
-        <div></div>
-        <div className="h-full font-styleFont flex items-center">
+        <div className={navstate == "/chat-bot" ? "flex" : "hidden"}></div>
+        <div className="pl-2 h-full font-styleFont text-inherit flex items-center">
           <div className="h-10 w-10 border-dotted border border-white rounded-full">
             <img
               className="rounded-full h-10 w-10 p-0.5"
               src="./naman.jpg"
             ></img>
           </div>
-          <span className="pl-3">Naman Rohilla</span>
+          <span className="pl-2 font-bold">Naman Rohilla</span>
         </div>
         <div onClick={toggleDrawer} className="pr-3 cursor-pointer">
           {isOpen3 ? (
