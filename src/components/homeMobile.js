@@ -132,7 +132,7 @@ export default function HomeMobile({ targetHome }) {
             )}
           </span>
         </div>
-        <div className="z-10 w-full absolute overflow-y-visible overflow-x-clip bg-transparent h-screen flex flex-col justify-between text-white items-center">
+        <div className="z-10 w-full absolute overflow-y-visible overflow-x-clip bg-transparent h-screen flex flex-col text-white items-center">
           <div className="border-gray-400 -top-16 animate-spin-slow-slow h-40 w-40 rounded-full border-2 border-dotted absolute"></div>
           <div className="outer-ring_2 opacity-20 z-1 drop-shadow-lg shadow-xl shadow-black relative"></div>
           <div className="inner-ring_2  z-1 shadow-inner shadow-black relative">
@@ -176,7 +176,7 @@ export default function HomeMobile({ targetHome }) {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1 }}
               id={`slider-item ${currentSlide == 0 ? "active" : ""}`}
-              className="w-full pb-5 flex flex-col justify-center z-10 px-4"
+              className="w-full pt-6 flex flex-col justify-center z-10 px-4"
             >
               <span className="text-5xl font-bold">Let's Connect</span>
               <span className="text-xl pt-4 text-gray-400">
@@ -340,7 +340,7 @@ export default function HomeMobile({ targetHome }) {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1 }}
               id={`slider-item ${currentSlide == 1 ? "active" : ""}`}
-              className="w-full pb-5 flex flex-col z-10 px-4"
+              className="w-full pt-6 flex flex-col z-10 px-4"
             >
               <span className="text-5xl font-bold">
                 Writing better with our AI
