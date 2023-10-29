@@ -774,7 +774,7 @@ export default function HomeMobile({ targetHome, currentSlide, setCurrentSlide }
           </div>
         </div>
       </div>
-      <div className="bg-gray-800 z-20">
+      <div className="mobile4height bg-gray-800 z-20">
         <div className="h-full w-full pt-40 pb-20 relative flex flex-col space-y-10 justify-center items-center">
           <div className="absolute z-20 top-10 w-full px-5 text-center text-lg text-white">
             Elevating Expertise, One Achievement at a Time.

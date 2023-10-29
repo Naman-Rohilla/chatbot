@@ -4,6 +4,22 @@
   font-family: 'Playpen Sans', cursive;
 }
 
+.web2home {
+  font-family: 'Playpen Sans', cursive;
+}
+
+.web3home {
+  font-family: 'Playpen Sans', cursive;
+}
+
+.web4home {
+  font-family: 'Playpen Sans', cursive;
+}
+
+.web5home {
+  font-family: 'Playpen Sans', cursive;
+}
+
 .mobileHeight {
   /* min-height: 100vh; */
   height: 100vh;
@@ -12,10 +28,16 @@
 }
 .mobile2height {
   height: 800px;
+  font-family: 'Playpen Sans', cursive;
 }
 
 .mobile3height {
   height: 2400px;
+  font-family: 'Playpen Sans', cursive;
+}
+
+.mobile4height {
+  font-family: 'Playpen Sans', cursive;
 }
 
 

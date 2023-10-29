@@ -393,7 +393,7 @@ export default function HomeWeb({ targetHome, currentSlide, setCurrentSlide }) {
           )}
         </div>
       </div>
-      <div className="h-screen overflow-y-visible overflow-x-clip flex flex-col bg-gray-800 text-white relative z-1 items-center">
+      <div className="web2home h-screen overflow-y-visible overflow-x-clip flex flex-col bg-gray-800 text-white relative z-1 items-center">
         <span className="flex justify-center pt-5 text-4xl">Products</span>
         <span className="flex w-1/2 justify-center pt-3 text-center text-md">
           Unlock the power of ChatBot for seamless, 24/7 customer interactions,
@@ -457,7 +457,7 @@ export default function HomeWeb({ targetHome, currentSlide, setCurrentSlide }) {
           Join the AI revolution and make every interaction count with ChatBot
         </span>
       </div>
-      <div className="h-screen bg-gray-800 relative overflow-x-clip">
+      <div className="web3home h-screen bg-gray-800 relative overflow-x-clip">
         <div className="h-full w-full flex justify-center items-center">
           <div className="h-80 w-1/2 pl-20 mt-20 z-10 flex items-center">
             <div className="h-60 w-96 relative flex justify-center items-center px-5">
@@ -617,7 +617,7 @@ export default function HomeWeb({ targetHome, currentSlide, setCurrentSlide }) {
           </div>
         </div>
       </div>
-      <div className="h-screen bg-gray-800 relative overflow-x-clip">
+      <div className="web4home h-screen bg-gray-800 relative overflow-x-clip">
         <div className="outer-ring_1 z-10 skew-y-6 skew-x-5 drop-shadow-lg shadow-lg shadow-black"></div>
         <div className="inner-ring_1 z-20 skew-y-6 skew-x-5 shadow-inner shadow-black"></div>
         <img
@@ -773,7 +773,7 @@ export default function HomeWeb({ targetHome, currentSlide, setCurrentSlide }) {
           </div>
         </div>
       </div>
-      <div className="h-screen bg-gray-800">
+      <div className="web5home h-screen bg-gray-800">
         <div className="h-full w-full relative flex space-x-10 justify-center items-center">
           <div className="absolute top-0 pt-5 w-1/2 text-center text-lg text-white">
             Elevating Expertise, One Achievement at a Time.
