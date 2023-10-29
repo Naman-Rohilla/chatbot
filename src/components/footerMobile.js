@@ -41,7 +41,7 @@ export default function FooterMobile({ targetElement }) {
 
   return (
     <>
-      <div ref={targetElement} className="z-20 bottom-0 bg-gray-800 border-t border-white shadow-sm h-full flex flex-col justify-center">
+      <div ref={targetElement} className="footerweb z-20 bottom-0 bg-gray-800 border-t border-white shadow-sm h-full flex flex-col justify-center">
         <div className="h-full flex flex-col items-center justify-between">
           <span className="font-styleFont space-x-5 pt-8 text-9xl text-white flex">
             <span className="nspin">n</span>

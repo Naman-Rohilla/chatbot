@@ -102,7 +102,7 @@ export default function StringEditor({ text }) {
   
 
   return (
-    <div className="flex flex-col">
+    <div className="stringEditorweb flex flex-col">
       {formattedText.map((line, index) => (
         <div key={index}>
           {typeof line === "string" ? (

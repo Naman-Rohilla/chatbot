@@ -41,7 +41,7 @@ export default function Footer({ targetElement }) {
 
   return (
     <>
-      <div ref={targetElement} className="z-20 bottom-0 bg-gray-800 border-t border-white shadow-sm h-96 flex justify-between">
+      <div ref={targetElement} className="footerweb z-20 bottom-0 bg-gray-800 border-t border-white shadow-sm h-96 flex justify-between">
         <div className="h-full flex flex-col justify-between w-1/2">
           <span className="font-styleFont space-x-5 pt-8 pl-10 text-9xl text-white flex">
             <span className="nspin">n</span>

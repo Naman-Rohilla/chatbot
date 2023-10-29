@@ -12,6 +12,7 @@ module.exports = {
     },
     fontFamily: {
       'styleFont': ['Style Script'],
+      // 'styleSerif': ['Dancing Script', 'Style Script', 'Young Serif'],
     }
   },
   plugins: [],

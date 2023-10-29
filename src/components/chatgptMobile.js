@@ -269,7 +269,7 @@ export default function ChatgptMobile() {
 
   return (
     <>
-      <div  className="h-screen bg-gray-800 flex">
+      <div  className="chatgptweb h-screen bg-gray-800 flex">
       {message && (
           <div className="z-50 absolute h-full w-full flex justify-center items-center">
             <div className="flex justify-center items-center bg-black text-white h-full w-full bg-opacity-50">

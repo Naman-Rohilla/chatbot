@@ -86,7 +86,7 @@ export default function Ocr() {
 
   return (
     <>
-      <div className="h-screen bg-gray-800 flex relative overflow-y-clip">
+      <div className="h-screen bg-gray-800 flex relative overflow-y-clip ocrweb">
         <div className="outer-ring_2 z-1 drop-shadow-lg shadow-xl shadow-black relative"></div>
         <div className="inner-ring_2 z-1 shadow-inner shadow-black relative">
           <img

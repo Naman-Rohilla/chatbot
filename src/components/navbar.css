@@ -2,10 +2,12 @@
 .navbar {
     background-color: transparent;
     transition: background-color 0.5s ease-in-out;
+    font-family: 'Playpen Sans', cursive;
   }
   
   /* Style for the navbar when scrolled */
   .navbar.scrolled {
     background-color: #0f172a; /* Change this to your desired color */
+    font-family: 'Playpen Sans', cursive;
   }
   

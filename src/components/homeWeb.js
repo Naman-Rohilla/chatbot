@@ -43,7 +43,7 @@ export default function HomeWeb({ targetHome, currentSlide, setCurrentSlide }) {
 
   return (
     <>
-      <div ref={targetHome} className="h-screen relative">
+      <div ref={targetHome} className="homeweb h-screen relative">
         <div className="h-full w-full overflow overflow-y-visible overflow-x-clip bg-gray-800 absolute flex justify-center items-center">
           <div className="box z-1 "></div>
           <div className="outer-ring z-1"></div>

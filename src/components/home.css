@@ -1,7 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@300&display=swap');
+
+.homeweb {
+  font-family: 'Playpen Sans', cursive;
+}
+
 .mobileHeight {
   /* min-height: 100vh; */
   height: 100vh;
   max-height: 1200px;
+  font-family: 'Playpen Sans', cursive;
 }
 .mobile2height {
   height: 800px;
